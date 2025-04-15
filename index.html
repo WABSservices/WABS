@@ -504,40 +504,54 @@
       <h2>Request a Free Quote</h2>
     </div>
 
-    <form>
-      <div class="form-group">
-        <label for="name"><img src="user-icon.png" class="icon" alt=""> Full Name</label>
-        <input type="text" id="name" name="name" placeholder="Your name" required>
-      </div>
+     <form>
+      <form action="https://formspree.io/f/xblgbplw" method="POST">
+        <!-- This sends a copy to your email too -->
+        <input type="hidden" name="_cc" value="shawbarbara49@gmail.com">
+        <!-- Turns off CAPTCHA -->
+        <input type="hidden" name="_captcha" value="false">
+        <!-- Optional redirect after submit -->
+        <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
 
-      <div class="form-group">
-        <label for="email"><img src="email-icon.png" class="icon" alt=""> Email Address</label>
-        <input type="email" id="email" name="email" placeholder="your@email.com" required>
-      </div>
+        <label for="name"> Your Name:</label><br>
+        <input type="text" name="Name" required><br><br>
 
-      <div class="form-group">
-        <label for="phone"><img src="phone-icon.png" class="icon" alt=""> Phone Number</label>
-        <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890">
-      </div>
+        <label for="service">Select Service:</label><br>
+        <select name="Service" required>
+            <option value="">--Choose an option--</option>
+            <option value="Transportation">Transportation</option>
+            <option value="Handyman">Handyman</option>
+            <option value="Both">Both</option>
+        </select><br><br>
 
-      <div class="form-group">
-        <label for="service"><img src="services-icon.png" class="icon" alt=""> Select Service</label>
-        <select id="service" name="service" required>
-          <option value="">-- Choose a Service --</option>
-          <option value="handyman">Handyman Services</option>
-          <option value="transportation">Transportation Services</option>
-        </select>
-      </div>
+        <label for="phone"> phone number:</label><br>
+        <input type="tel" name="Client Phone" required><br><br>
 
-      <div class="form-group">
-        <label for="message"><img src="message-icon.png" class="icon" alt=""> Describe Your Request</label>
-        <textarea id="message" name="message" rows="4" placeholder="Tell us about your needs..." required></textarea>
-      </div>
+        <label for="message">Your Message:</label><br>
+        <textarea name="Message" rows="5" required></textarea><br><br>
 
-      <button type="submit" class="submit-btn">Get My Quote</button>
+        <button type="submit">Send Query</button>
+    </form>
+
+    <p id="thankYouMessage" style="display: none; color: green; font-weight: bold;">Thank you! Your request has been sent.</p>
+
+    <script>
+        const form = document.querySelector("form");
+        const thankYou = document.getElementById("thankYouMessage");
+
+        form.addEventListener("submit", function () {
+            setTimeout(() => {
+                thankYou.style.display = "block";
+            }, 500);
+        });
+    </script>
+</body>
+</html>
+
     </form>
   </div>
 </section>
+
 
 </body>
 </html>
